@@ -1,23 +1,30 @@
+// 114 tests has been passed out of 156
+
 const compactObject = (obj) => {
   const isArray = Array.isArray(obj);
   if (isArray) {
-    return obj.filter((el) => {
-      if (Array.isArray(el)) {
-        return el.filter(Boolean);
+    let result = [];
+    for (let i = 0; i < obj.length; i++) {
+      if (Array.isArray(obj[i])) {
+        result.push(compactObject(obj[i]));
+      } else if (obj[i]) {
+        result.push(obj[i]);
       }
-      return Boolean(el);
-    });
+    }
+    return result;
   } else {
     let res = {};
     for (let key in obj) {
       if (obj[key]) {
-        res = { ...res, [key]: compactObject(obj[key]) };
+        const val =
+          typeof obj[key] === 'string' ||
+          typeof obj[key] === 'number' ||
+          typeof obj[key] === 'boolean'
+            ? obj[key]
+            : compactObject(obj[key]);
+        res = { ...res, [key]: val };
       }
     }
     return res;
   }
 };
-
-// console.log(compactObject([null, 0, false, 1])); // [1]
-// console.log(compactObject({ a: null, b: [false, 1] })); // {"b": [1]}
-console.log(compactObject([null, 0, 5, [0], [false, 16]])); // [5, [], [16]]

@@ -1,32 +1,38 @@
 class EventEmitter {
-  hash = {};
+  constructor() {
+    this.events = new Map();
+  }
 
   subscribe(eventName, callback) {
+    if (!this.events.has(eventName)) {
+      this.events.set(eventName, []);
+    }
+    this.events.get(eventName).push(callback);
+
     return {
-      unsubscribe: () => {}
+      unsubscribe: () => {
+        const callbacks = this.events.get(eventName);
+        if (callbacks) {
+          this.events.set(
+            eventName,
+            callbacks.filter((cb) => cb !== callback)
+          );
+        }
+      }
     };
   }
 
-  emit(eventName, args = []) {}
+  emit(eventName, args = []) {
+    const callbacks = this.events.get(eventName) || [];
+    return callbacks.map((callback) => callback(...args));
+  }
 }
 
-/**
- * const emitter = new EventEmitter();
- *
- * // Subscribe to the onClick event with onClickCallback
- * function onClickCallback() { return 99 }
- * const sub = emitter.subscribe('onClick', onClickCallback);
- *
- * emitter.emit('onClick'); // [99]
- * sub.unsubscribe(); // undefined
- * emitter.emit('onClick'); // []
- */
+const emitter = new EventEmitter();
+emitter.subscribe('firstEvent', function cb1(...args) {
+  return args.join(',');
+});
+console.log(emitter.emit('firstEvent', [1, 2, 3])); // ["1,2,3"]
+console.log(emitter.emit('firstEvent', [3, 4, 6])); // ["3,4,6"]
 
 // https://leetcode.com/problems/event-emitter
-
-const obj = {
-  key: [1, 2, 3],
-  name: 'hello'
-};
-
-console.log(obj);

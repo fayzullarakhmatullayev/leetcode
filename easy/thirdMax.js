@@ -1,5 +1,13 @@
 var thirdMax = function (nums) {
-  for (let i = 0; i < nums.length; i++) {}
+  const distinctNums = new Set(nums);
+
+  const sortedNums = Array.from(distinctNums).sort((a, b) => b - a);
+
+  if (sortedNums.length >= 3) {
+    return sortedNums[2];
+  } else {
+    return sortedNums[0];
+  }
 };
 
 console.log(thirdMax([3, 2, 1])); // 1

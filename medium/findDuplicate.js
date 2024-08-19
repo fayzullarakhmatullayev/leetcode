@@ -16,6 +16,19 @@ var findDuplicate = function (nums) {
   }
 };
 
+// another solution with hash map
+// var findDuplicate = function (nums) {
+//   const hash = {};
+
+//   for (let i = 0; i < nums.length; i++) {
+//     if (!hash[nums[i]]) {
+//       hash[nums[i]] = true;
+//     } else {
+//       return nums[i];
+//     }
+//   }
+// };
+
 // solution with new Map
 // var findDuplicate = function (nums) {
 //   const hash = new Map();

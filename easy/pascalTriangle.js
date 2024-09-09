@@ -3,21 +3,28 @@
  * @return {number[][]}
  */
 var generate = function (numRows) {
-  const result = [];
+  const arr = [];
 
-  for (let i = 1; i <= numRows; i++) {
-    let sums = [];
+  for (let i = 0; i < numRows; i++) {
+    arr[i] = [];
+    const sums = [];
 
-    for (let j = 1; j <= i; j++) {
-      sums.push(1);
+    for (let j = 0; j < i + 1; j++) {
+      arr[i].push(1);
     }
 
-    result.push(sums);
+    if (i >= 2) {
+      for (let j = 0; j < i; j++) {
+        if (arr[i - 1][j + 1]) {
+          sums.push(arr[i - 1][j] + arr[i - 1][j + 1]);
+        }
+      }
+
+      arr[i] = [1, ...sums, 1];
+    }
   }
 
-  for (let i = 0; i < result.length; i++) {}
-
-  return result;
+  return arr;
 };
 
 console.log(generate(5)); // [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
@@ -32,3 +39,38 @@ console.log(generate(5)); // [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
  *
  * https://leetcode.com/problems/pascals-triangle/description/
  */
+
+/**
+ *                                  1
+ *                                 1 1
+ *                                1 2 1
+ *                               1 3 3 1
+ *                              1 4 6 4 1
+ */
+
+/**
+ *  - birinchi navbatda collektsiyaga yegilgan summa miqdori yegiladi;
+ *  - demak bitta kollektisya ishlatilinmaydi, balki birinci kollektisya yegindilar hisoblab va qoshish uchun
+ *  - va ikkinchi kollektisya oldingi hisoblangan kollektsiyani umumiy javob massiviga qishish kerak
+ */
+
+/**
+ * mening tepadagi yechimim time complexity boyicha zor ammo memory juda yomon chiqdi. 
+ * mana shu yechim eng optimal yechim boldi.
+ * 
+ * 
+var generate = function(numRows) {
+  const arr = [];
+
+  for (let i = 0; i < numRows; i++) {
+    arr[i] = new Array(i + 1).fill(1);
+
+    for (let j = 1; j < i; j++) {
+      arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
+    }
+  }
+
+  return arr;
+};
+
+*/

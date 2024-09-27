@@ -8,7 +8,9 @@
 var findIntersectionValues = function (nums1, nums2) {
   const map1 = createMap(nums1);
   const map2 = createMap(nums2);
-  return [checkAndInsertResult(map1, map2), checkAndInsertResult(map2, map1)];
+  const answer1 = checkAndInsertResult(map1, map2);
+  const answer2 = checkAndInsertResult(map2, map1);
+  return [answer1, answer2];
 };
 
 function createMap(arr) {

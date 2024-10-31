@@ -2,6 +2,8 @@
  * @param {string[]} words
  * @return {string[]}
  */
+
+// my code
 var commonChars = function (words) {
   let map = new Map();
 
@@ -17,7 +19,6 @@ var commonChars = function (words) {
       }
     }
 
-    map = null;
     map = newMap;
   }
 
@@ -31,6 +32,20 @@ var commonChars = function (words) {
 
   return answer;
 };
+
+/**
+ * The best version of code
+    var commonChars = function(words) {
+      let theCommon = [];
+      for(let word of words[0]){
+        if(words.every((char) => char.includes(word))){
+            theCommon.push(word);
+            words = words.map((char) => char.replace(word, ''));
+        }
+      }
+      return theCommon;
+    };
+ */
 
 /**
  * Initialize a frequency map using the characters of the first word. For each subsequent word, create a new     frequency map and update the initial map to keep the minimum frequency of each character. Finally, construct the result list by adding each character the number of times it appears in the final frequency map.

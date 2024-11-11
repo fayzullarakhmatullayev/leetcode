@@ -693,7 +693,7 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -488.0117950703712,
+			"x": -484.70156080159205,
 			"y": 538.0885881911483,
 			"rotation": 0,
 			"isLocked": false,
@@ -704,8 +704,8 @@
 			"props": {
 				"color": "black",
 				"size": "m",
-				"w": 141.22500610351562,
-				"text": "\n  [1, 1,  1,  1]\n  [1, 2, 2, 2]\n  [1, 2, 3, 3]",
+				"w": 149.46250915527344,
+				"text": "\n  [1, 1,  1,  1]\n  [1, 2, 2,  2]\n  [1, 2, 3, 3]",
 				"font": "draw",
 				"textAlign": "start",
 				"autoSize": true,
@@ -915,8 +915,8 @@
 			"meta": {}
 		},
 		{
-			"x": -1090.7972577642925,
-			"y": 21.342946110046512,
+			"x": -1147.5935289730278,
+			"y": 28.175531737129575,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -986,9 +986,9 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": -178.49625224010254,
-			"y": 644.5330606787929,
-			"lastActivityTimestamp": 1731095448491,
+			"x": 576.9499929255757,
+			"y": 655.53135565657,
+			"lastActivityTimestamp": 1731141744322,
 			"meta": {}
 		},
 		{
@@ -1037,9 +1037,11 @@
 			"typeName": "instance"
 		},
 		{
-			"editingShapeId": null,
+			"editingShapeId": "shape:T3RK5JMXQClnc0EiBnVpU",
 			"croppingShapeId": null,
-			"selectedShapeIds": [],
+			"selectedShapeIds": [
+				"shape:T3RK5JMXQClnc0EiBnVpU"
+			],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
@@ -1050,12 +1052,58 @@
 			"typeName": "instance_page_state"
 		},
 		{
-			"x": 1142.9781460071622,
-			"y": 88.23243427371574,
-			"z": 0.6646055298108203,
+			"x": 860.5577739672775,
+			"y": -362.44724784346397,
+			"z": 0.7165178677443436,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
+		},
+		{
+			"x": 160.13951239164317,
+			"y": 559.1591518239119,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:nKjSDvD9KDGXYQWXM2wy2",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 106.375,
+				"text": "01:\ncol = 2\nrow = 0\n\n02:\ncol = 1\nrow = 0 \ncol = 2\nrow = 1\n\n03:\ncol = 0\nrow = 0\ncol = 1\nrow = 1\ncol = 2\nrow = 2",
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "ab8vg",
+			"typeName": "shape"
+		},
+		{
+			"x": 365.29838786081723,
+			"y": 553.5765973893765,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:T3RK5JMXQClnc0EiBnVpU",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 106.375,
+				"text": "04:\ncol = 2\nrow = 3\n\n\n02:\ncol = 1\nrow = 0 \ncol = 2\nrow = 1\n\n03:\ncol = 0\nrow = 0\ncol = 1\nrow = 1\ncol = 2\nrow = 2",
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "acBKH",
+			"typeName": "shape"
 		}
 	]
 }

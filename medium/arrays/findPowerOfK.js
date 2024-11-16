@@ -1,3 +1,4 @@
+// my answer
 /**
  * @param {number[]} nums
  * @param {number} k
@@ -24,6 +25,26 @@ var resultsArray = function (nums, k) {
 
   return answer;
 };
+
+// best answer
+// var resultsArray = function (nums, k) {
+//   const answer = [];
+
+//   const checkIsSortedAndGetMax = (arr, start) => {
+//     for (let i = start + 1; i < start + k; i++) {
+//       if (nums[i - 1] + 1 !== nums[i]) {
+//         return -1;
+//       }
+//     }
+//     return nums[start + k - 1];
+//   };
+
+//   for (let i = 0; i <= nums.length - k; i++) {
+//     answer.push(checkIsSortedAndGetMax(nums, i));
+//   }
+
+//   return answer;
+// };
 
 console.log(resultsArray([1, 2, 3, 4, 3, 2, 5], 3)); //  [3,4,-1,-1,-1]
 console.log(resultsArray([3, 2, 3, 2, 3, 2], 2)); //  [3,4,-1,-1,-1]

@@ -2,6 +2,38 @@
  * @param {number[]} nums
  * @return {number}
  */
+
+// my implementation passed 67 / 76 tests
+/**
+  const longestConsecutive = function (nums) {
+  const set = new Set();
+  const collection = [];
+
+  for (let num of nums) {
+    set.add(num);
+  }
+
+  for (let i = Math.min(...nums); i <= nums.length; i++) {
+    if (set.has(i)) {
+      collection.push(i);
+    }
+  }
+
+  let count = 0;
+  let max = -Infinity;
+
+  for (let i = 0; i < collection.length; i++) {
+    count++;
+
+    if (collection[i + 1] && collection[i + 1] !== collection[i] + 1) {
+      max = Math.max(count, max);
+      count = 0;
+    }
+  }
+
+  return Math.max(count, max);
+};*/
+
 const longestConsecutive = function (nums) {
   if (nums.length === 0) return 0;
 

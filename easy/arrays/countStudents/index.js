@@ -13,6 +13,7 @@ var countStudents = function (students, sandwiches) {
     } else {
       students.shift();
       sandwiches.shift();
+      // console.log(students, sandwiches);
     }
   }
   return students.length;

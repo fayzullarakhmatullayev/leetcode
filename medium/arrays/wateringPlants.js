@@ -22,22 +22,6 @@ var wateringPlants = function (plants, capacity) {
   return steps;
 };
 
-// const wateringPlants = (plants, capacity) => {
-//   let steps = 0;
-//   let can = capacity;
-
-//   for (let i = 0; i < plants.length; i++) {
-//     if (can < plants[i]) {
-//       steps += i * 2;
-//       can = capacity;
-//     }
-//     can -= plants[i];
-//     steps += 1;
-//   }
-
-//   return steps;
-// };
-
 console.log(wateringPlants([2, 2, 3, 3], 5));
 
 /**

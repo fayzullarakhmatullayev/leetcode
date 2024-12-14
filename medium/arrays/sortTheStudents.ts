@@ -14,7 +14,7 @@ function sortTheStudents(score: number[][], k: number): number[][] {
 
   const answer: number[][] = Array(score.length);
 
-  for (let i = 0; i < score.length; i++) {
+  for (let i: number = 0; i < score.length; i++) {
     const mapIdx = map[i].index;
     answer[i] = score[mapIdx];
   }

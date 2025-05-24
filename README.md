@@ -1,6 +1,6 @@
 # LeetCode Solutions
 
-This repository contains solutions to coding challenges I've completed on [LeetCode](https://leetcode.com/). Each solution is written in JavaScript.
+This repository contains solutions to coding challenges I've completed on [LeetCode](https://leetcode.com/). Each solution is written in JavaScript and TypeScript.
 
 ## Profile
 

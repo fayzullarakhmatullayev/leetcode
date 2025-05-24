@@ -10,11 +10,10 @@ You can view my LeetCode profile [here](https://leetcode.com/u/fayzulla_raxmatul
 
 The repository is organized by challenge difficulty. Each folder represents a difficulty level.
 
-. <br>
-├── easy/ <br>
-├── medium/ <br>
-├── hard/ <br>
-└── ... <br>
+├── easy/
+├── medium/
+├── hard/
+└── ...
 
 ## Contributing
 

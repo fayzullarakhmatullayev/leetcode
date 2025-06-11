@@ -1,30 +1,33 @@
 function subdomainVisits(cpdomains: string[]): string[] {
-  const map: Map<string, number> = new Map();
+  const domainCountMap: Map<string, number> = new Map();
 
   for (const cpdomain of cpdomains) {
-    const visitedCount = cpdomain.split(' ')[0];
-    const domains = cpdomain.split(' ')[1].split('.');
-    let domaintext = '';
+    const [countStr, fullDomain] = cpdomain.split(' ');
+    const domainParts = fullDomain.split('.');
+    let currentSubdomain = '';
 
-    for (let i = domains.length - 1; i >= 0; i--) {
-      const domain = domains[i];
-      if (domaintext === '') {
-        domaintext = domain;
+    for (let i = domainParts.length - 1; i >= 0; i--) {
+      const part = domainParts[i];
+      if (currentSubdomain === '') {
+        currentSubdomain = part;
       } else {
-        domaintext = domain + '.' + domaintext;
+        currentSubdomain = part + '.' + currentSubdomain;
       }
 
-      map.set(domaintext, (map.get(domaintext) || 0) + Number(visitedCount));
+      domainCountMap.set(
+        currentSubdomain,
+        (domainCountMap.get(currentSubdomain) || 0) + Number(countStr)
+      );
     }
   }
 
-  const answer: string[] = [];
+  const result: string[] = [];
 
-  for (const [key, value] of map.entries()) {
-    answer.push(`${value} ${key}`);
+  for (const [subdomain, count] of domainCountMap.entries()) {
+    result.push(`${count} ${subdomain}`);
   }
 
-  return answer;
+  return result;
 }
 
 console.log(subdomainVisits(['9001 discuss.leetcode.com'])); // ["9001 leetcode.com","9001 discuss.leetcode.com","9001 com"]

@@ -37,4 +37,5 @@ for (let i = values.length - 1; i >= 0; i--) {
   head = new ListNode(values[i], head);
 }
 
-console.log(JSON.stringify(sortList(head), null, 4));
+console.log('unsorted', JSON.stringify(head, null, 4));
+console.log('sorted', JSON.stringify(sortList(head), null, 4));

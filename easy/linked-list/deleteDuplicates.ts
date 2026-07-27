@@ -1,0 +1,20 @@
+import { createList, ListNode, stringify } from './utils';
+
+function deleteDuplicates(head: ListNode | null): ListNode | null {
+  let current = head;
+
+  while (current && current.next) {
+    if (current.val === current.next.val) {
+      current.next = current.next.next;
+    } else {
+      current = current.next;
+    }
+  }
+
+  return head;
+}
+
+console.log(createList([1, 1, 2]));
+
+console.log(stringify(deleteDuplicates(createList([1, 1, 2]))));
+console.log(stringify(deleteDuplicates(createList([1, 1, 2, 3, 3]))));

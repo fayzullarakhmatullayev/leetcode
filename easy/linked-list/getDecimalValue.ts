@@ -1,4 +1,4 @@
-import { createList, ListNode } from './utils';
+import { createList, ListNode } from '../../utils';
 
 function getDecimalValue(head: ListNode | null): number {
   let curr: ListNode | null = head;

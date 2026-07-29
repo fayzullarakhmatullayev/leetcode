@@ -1,4 +1,4 @@
-import { createList, ListNode, stringify } from './utils';
+import { createList, ListNode, stringify } from '../../utils';
 
 function reverseLinkedList(head: ListNode | null): ListNode | null {
   let prev = null;

@@ -1,4 +1,4 @@
-import { createList, ListNode, stringify } from './utils';
+import { createList, ListNode, stringify } from '../../utils';
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
   let current = head;
@@ -13,8 +13,6 @@ function deleteDuplicates(head: ListNode | null): ListNode | null {
 
   return head;
 }
-
-console.log(createList([1, 1, 2]));
 
 console.log(stringify(deleteDuplicates(createList([1, 1, 2]))));
 console.log(stringify(deleteDuplicates(createList([1, 1, 2, 3, 3]))));

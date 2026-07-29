@@ -1,4 +1,4 @@
-import { createList, ListNode, stringify } from './utils';
+import { createList, ListNode, stringify } from '../../utils';
 
 function isPalindrome(head: ListNode | null): boolean {
   let current = head;

@@ -1,4 +1,4 @@
-import { createList, ListNode } from './utils';
+import { createList, ListNode } from '../../utils';
 
 function middleNode(head: ListNode | null): ListNode | null {
   let length = 0;

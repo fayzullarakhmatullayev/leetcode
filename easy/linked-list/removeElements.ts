@@ -1,4 +1,4 @@
-import { stringify, createList, ListNode } from './utils';
+import { stringify, createList, ListNode } from '../../utils';
 
 function removeElements(head: ListNode | null, val: number): ListNode | null {
   const dummy = new ListNode(0);

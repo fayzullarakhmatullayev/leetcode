@@ -23,17 +23,20 @@ function swapPairs2(head: ListNode | null): ListNode | null {
 function swapPairs(head: ListNode | null): ListNode | null {
   const dummy = new ListNode(0, head);
   let prev = dummy;
-  let current = head;
 
-  while (current && current.next) {
-    const next = current.next;
+  while (prev.next && prev.next.next) {
+    // define pointers
+    const first = prev.next;
+    const second = first.next;
+    const nextPair = second!.next;
 
-    current.next = next.next;
-    next.next = current;
-    prev.next = next;
+    // Swap
+    prev.next = second;
+    second!.next = first;
+    first.next = nextPair;
 
-    prev = current;
-    current = current.next;
+    // move next pair
+    prev = first;
   }
 
   return dummy.next;

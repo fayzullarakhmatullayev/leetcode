@@ -1,4 +1,4 @@
-import { ListNode } from './utils';
+import { ListNode } from '../../utils';
 
 function hasCycle(head: ListNode | null): boolean {
   let fast = head;

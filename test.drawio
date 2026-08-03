@@ -1,0 +1,13 @@
+<mxfile host="65bd71144e">
+    <diagram id="da_PYQr7WPK7B-TWXF7a" name="Page-1">
+        <mxGraphModel dx="1002" dy="563" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;font face=&quot;SF Mono, Monaco, Menlo, Consolas, Ubuntu Mono, Liberation Mono, DejaVu Sans Mono, Courier New, monospace&quot; color=&quot;#cdd6f4&quot;&gt;&lt;span style=&quot;font-size: 13px; background-color: rgba(255, 255, 255, 0.1);&quot;&gt;{&quot;val&quot;:1,&quot;next&quot;:{&quot;val&quot;:2,&quot;next&quot;:{&quot;val&quot;:3,&quot;next&quot;:{&quot;val&quot;:4,&quot;next&quot;:null}}}}&lt;/span&gt;&lt;/font&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="110" width="550" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

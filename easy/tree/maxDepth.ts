@@ -15,22 +15,18 @@ function maxDepth2(root: TreeNode | null): number {
 
   const queue: TreeNode[] = [root];
   let depth = 0;
-  console.log('initial❄️ ', stringify(queue));
 
   while (queue.length) {
     const size = queue.length;
 
     for (let i = 0; i < size; i++) {
       const node = queue.shift()!;
-      console.log('node🔥 ', stringify(node));
-      console.log('is left⬅️ ', !!node.left);
+
       if (node.left) {
-        console.log('left👈 ', stringify(queue));
         queue.push(node.left);
       }
-      console.log('is right➡️ ', !!node.right);
+
       if (node.right) {
-        console.log('right👉 ', stringify(queue));
         queue.push(node.right);
       }
     }

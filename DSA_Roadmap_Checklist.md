@@ -11,7 +11,7 @@
 
 ## Trees (20--25 problems)
 
-- [ ] Maximum Depth of Binary Tree
+- [x] Maximum Depth of Binary Tree
 - [ ] Invert Binary Tree
 - [ ] Same Tree
 - [ ] Symmetric Tree

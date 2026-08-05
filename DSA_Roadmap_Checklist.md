@@ -12,8 +12,8 @@
 ## Trees (20--25 problems)
 
 - [x] Maximum Depth of Binary Tree
-- [ ] Invert Binary Tree
-- [ ] Same Tree
+- [x] Invert Binary Tree
+- [x] Same Tree
 - [ ] Symmetric Tree
 - [ ] Path Sum
 - [ ] Diameter of Binary Tree

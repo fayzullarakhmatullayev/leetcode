@@ -15,10 +15,10 @@
 - [x] Invert Binary Tree
 - [x] Same Tree
 - [x] Symmetric Tree
-- [ ] Path Sum
+- [x] Path Sum
 - [ ] Diameter of Binary Tree
 - [ ] Balanced Binary Tree
-- [ ] Binary Tree Level Order Traversal
+- [x] Binary Tree Level Order Traversal
 - [ ] Lowest Common Ancestor
 - [ ] Validate Binary Search Tree
 

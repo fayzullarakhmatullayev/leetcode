@@ -14,7 +14,7 @@
 - [x] Maximum Depth of Binary Tree
 - [x] Invert Binary Tree
 - [x] Same Tree
-- [ ] Symmetric Tree
+- [x] Symmetric Tree
 - [ ] Path Sum
 - [ ] Diameter of Binary Tree
 - [ ] Balanced Binary Tree

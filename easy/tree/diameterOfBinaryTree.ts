@@ -46,10 +46,10 @@ function diameterOfBinaryTree(root: TreeNode | null): number {
   return diameter;
 }
 
-console.log(diameterOfBinaryTree(createTree([1, 2, 3, 4, 5])));
-console.log(diameterOfBinaryTree(createTree([1, 2])));
+console.log(diameterOfBinaryTree(createTree([1, 2, 3, 4, 5]))); // 3
+console.log(diameterOfBinaryTree(createTree([1, 2]))); // 1
 
 const long1 = [4, -7, -3, null, null, -9, -3, 9, -7, -4, null, 6, null, -6, -6, null];
 const long2 = [null, 0, 6, 5, null, 9, null, null, -1, -4, null, null, null, -2];
 
-console.log(diameterOfBinaryTree(createTree(long1.concat(long2))));
+console.log(diameterOfBinaryTree(createTree(long1.concat(long2)))); // 8

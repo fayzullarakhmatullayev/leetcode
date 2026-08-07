@@ -16,7 +16,7 @@
 - [x] Same Tree
 - [x] Symmetric Tree
 - [x] Path Sum
-- [ ] Diameter of Binary Tree
+- [x] Diameter of Binary Tree
 - [ ] Balanced Binary Tree
 - [x] Binary Tree Level Order Traversal
 - [ ] Lowest Common Ancestor

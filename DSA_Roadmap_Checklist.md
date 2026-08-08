@@ -17,7 +17,7 @@
 - [x] Symmetric Tree
 - [x] Path Sum
 - [x] Diameter of Binary Tree
-- [ ] Balanced Binary Tree
+- [x] Balanced Binary Tree
 - [x] Binary Tree Level Order Traversal
 - [ ] Lowest Common Ancestor
 - [ ] Validate Binary Search Tree

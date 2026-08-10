@@ -9,7 +9,20 @@
 5.  Graphs
 6.  Dynamic Programming
 
-## Trees (20--25 problems)
+# DSA Roadmap (After Linked Lists)
+
+## Recommended Order
+
+1. Trees
+2. Stack & Queue
+3. Binary Search
+4. Heap
+5. Graphs
+6. Dynamic Programming
+
+## Trees (25 problems)
+
+### Basic DFS / Recursion
 
 - [x] Maximum Depth of Binary Tree
 - [x] Invert Binary Tree
@@ -18,9 +31,36 @@
 - [x] Path Sum
 - [x] Diameter of Binary Tree
 - [x] Balanced Binary Tree
+
+### Tree Traversal
+
 - [x] Binary Tree Level Order Traversal
-- [x] Lowest Common Ancestor
-- [ ] Validate Binary Search Tree
+- [x] Binary Tree Preorder Traversal
+- [x] Binary Tree Inorder Traversal
+- [x] Binary Tree Postorder Traversal
+- [ ] Binary Tree Right Side View
+
+### Tree Relationships / Paths
+
+- [x] Lowest Common Ancestor of a Binary Tree
+- [ ] Subtree of Another Tree
+- [ ] Path Sum II
+- [ ] Binary Tree Maximum Path Sum
+- [ ] Sum Root to Leaf Numbers
+
+### Binary Search Trees
+
+- [x] Validate Binary Search Tree
+- [ ] Search in a Binary Search Tree
+- [ ] Insert into a Binary Search Tree
+- [ ] Kth Smallest Element in a BST
+- [ ] Lowest Common Ancestor of a BST
+
+### Tree Construction / Advanced
+
+- [ ] Construct Binary Tree from Preorder and Inorder Traversal
+- [ ] Serialize and Deserialize Binary Tree
+- [ ] Populating Next Right Pointers in Each Node
 
 ## Stack
 

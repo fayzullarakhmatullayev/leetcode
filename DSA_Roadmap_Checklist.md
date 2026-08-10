@@ -19,7 +19,7 @@
 - [x] Diameter of Binary Tree
 - [x] Balanced Binary Tree
 - [x] Binary Tree Level Order Traversal
-- [ ] Lowest Common Ancestor
+- [x] Lowest Common Ancestor
 - [ ] Validate Binary Search Tree
 
 ## Stack

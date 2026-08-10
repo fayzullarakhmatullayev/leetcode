@@ -25,6 +25,29 @@ function levelOrder(root: TreeNode | null): number[][] {
   return result;
 }
 
+function levelOrder2(root: TreeNode | null): number[][] {
+  if (!root) return [];
+
+  const result: number[][] = [];
+
+  function dfs(node: TreeNode | null, depth: number): void {
+    if (!node) return;
+
+    if (!result[depth]) {
+      result[depth] = [];
+    }
+
+    result[depth].push(node.val);
+
+    dfs(node.left, depth + 1);
+    dfs(node.right, depth + 1);
+  }
+
+  dfs(root, 0);
+
+  return result;
+}
+
 console.log(levelOrder(createTree([3, 9, 20, null, null, 15, 7])));
 console.log(levelOrder(createTree([1])));
 console.log(levelOrder(createTree([1, 2, 3, 4, null, null, 5])));

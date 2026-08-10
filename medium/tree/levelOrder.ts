@@ -1,4 +1,4 @@
-import { createTree, stringify, TreeNode } from '../../utils';
+import { createTree, TreeNode } from '../../utils';
 
 function levelOrder(root: TreeNode | null): number[][] {
   if (!root) return [];

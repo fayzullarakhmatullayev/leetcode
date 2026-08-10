@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LCA dry run — interactive</title>
+    <style>
+      :root {
+        --bg: #16171b;
+        --panel: #1f2025;
+        --panel2: #25262c;
+        --border: #34353b;
+        --ink: #f0efec;
+        --sub: #9a988f;
+        --mono: 'SFMono-Regular', Consolas, Menlo, monospace;
+        --blue: #5b9dff;
+        --blue-bg: #152a4a;
+        --green: #4cbf7a;
+        --green-bg: #14301f;
+        --gold: #e0ac3f;
+        --gold-bg: #3a2c0d;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+      }
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 32px 24px 48px;
+      }
+      h1 {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0 0 4px;
+      }
+      .sub {
+        color: var(--sub);
+        font-size: 13px;
+        margin: 0 0 24px;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px;
+      }
+      svg {
+        display: block;
+        margin: 0 auto;
+      }
+      .box {
+        fill: var(--panel2);
+        stroke: var(--border);
+      }
+      .row {
+        display: flex;
+        gap: 16px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
+      .row > div {
+        flex: 1;
+        min-width: 220px;
+      }
+      .panel-title {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--sub);
+        margin-bottom: 8px;
+      }
+      #stackList {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 6px;
+        min-height: 36px;
+      }
+      .chip {
+        padding: 6px 10px;
+        background: var(--panel2);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-family: var(--mono);
+        font-size: 13px;
+      }
+      #codePanel {
+        font-family: var(--mono);
+        font-size: 12.5px;
+        line-height: 2;
+      }
+      #codePanel div {
+        padding: 2px 8px;
+        border-radius: 5px;
+        white-space: pre;
+      }
+      #stepText {
+        margin-top: 16px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 14px 16px;
+        font-size: 14.5px;
+        min-height: 20px;
+      }
+      #stepText b {
+        font-weight: 600;
+      }
+      #stepText code {
+        font-family: var(--mono);
+        background: var(--panel2);
+        padding: 1px 5px;
+        border-radius: 4px;
+      }
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 20px;
+      }
+      button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid var(--border);
+        background: var(--panel2);
+        color: var(--ink);
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.35;
+        cursor: default;
+      }
+      button:not(:disabled):hover {
+        background: var(--border);
+      }
+      #track {
+        flex: 1;
+        height: 4px;
+        background: var(--border);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      #prog {
+        height: 100%;
+        background: var(--blue);
+        width: 0%;
+      }
+      #stepCount {
+        font-size: 12px;
+        color: var(--sub);
+        min-width: 48px;
+        text-align: right;
+        font-family: var(--mono);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>lowestCommonAncestor — interactive dry run</h1>
+      <p class="sub">
+        Tree from <code style="font-family: var(--mono)">[3,5,1,6,2,0,8,null,null,7,4]</code> · p=6,
+        q=4 · use the arrows or the ‹ › buttons
+      </p>
+
+      <div class="card">
+        <svg width="100%" viewBox="0 0 680 380" role="img">
+          <title>LCA dry run tree</title>
+          <g id="edges" stroke="var(--border)" stroke-width="1.6" fill="none">
+            <line data-e="3-5" x1="320" y1="66" x2="206" y2="124" />
+            <line data-e="3-1" x1="360" y1="66" x2="474" y2="124" />
+            <line data-e="5-6" x1="176" y1="160" x2="116" y2="214" />
+            <line data-e="5-2" x1="204" y1="160" x2="266" y2="214" />
+            <line data-e="1-0" x1="476" y1="160" x2="414" y2="214" />
+            <line data-e="1-8" x1="504" y1="160" x2="566" y2="214" />
+            <line data-e="2-7" x1="270" y1="250" x2="248" y2="304" />
+            <line data-e="2-4" x1="290" y1="250" x2="318" y2="304" />
+          </g>
+          <g id="nodes" font-size="15" font-weight="600" text-anchor="middle">
+            <g data-n="3" transform="translate(340,50)">
+              <circle r="24" class="box" />
+              <text dominant-baseline="central" fill="var(--ink)">3</text>
+            </g>
+            <g data-n="5" transform="translate(190,140)">
+              <circle r="24" class="box" />
+              <text dominant-baseline="central" fill="var(--ink)">5</text>
+            </g>
+            <g data-n="1" transform="translate(490,140)">
+              <circle r="24" class="box" />
+              <text dominant-baseline="central" fill="var(--ink)">1</text>
+            </g>
+            <g data-n="6" transform="translate(100,230)">
+              <circle r="24" class="box" />
+              <text dominant-baseline="central" fill="var(--ink)">6</text>
+            </g>
+            <g data-n="2" transform="translate(280,230)">
+              <circle r="24" class="box" />
+              <text dominant-baseline="central" fill="var(--ink)">2</text>
+            </g>
+            <g data-n="0" transform="translate(400,230)">
+              <circle r="24" class="box" />
+              <text dominant-baseline="central" fill="var(--ink)">0</text>
+            </g>
+            <g data-n="8" transform="translate(580,230)">
+              <circle r="24" class="box" />
+              <text dominant-baseline="central" fill="var(--ink)">8</text>
+            </g>
+            <g data-n="7" transform="translate(240,320)">
+              <circle r="24" class="box" />
+              <text dominant-baseline="central" fill="var(--ink)">7</text>
+            </g>
+            <g data-n="4" transform="translate(320,320)">
+              <circle r="24" class="box" />
+              <text dominant-baseline="central" fill="var(--ink)">4</text>
+            </g>
+            <text
+              x="100"
+              y="264"
+              text-anchor="middle"
+              font-size="12"
+              font-weight="400"
+              fill="var(--sub)"
+            >
+              p
+            </text>
+            <text
+              x="320"
+              y="354"
+              text-anchor="middle"
+              font-size="12"
+              font-weight="400"
+              fill="var(--sub)"
+            >
+              q
+            </text>
+          </g>
+          <g id="resultLabels" font-size="11.5" fill="var(--sub)" text-anchor="middle"></g>
+        </svg>
+
+        <div class="row">
+          <div>
+            <div class="panel-title">Call stack</div>
+            <div id="stackList"></div>
+          </div>
+          <div style="flex: 1.4">
+            <div class="panel-title">Code</div>
+            <div id="codePanel"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="stepText"></div>
+
+      <div class="controls">
+        <button id="prevBtn" aria-label="Previous step">&#8249;</button>
+        <div id="track"><div id="prog"></div></div>
+        <button id="nextBtn" aria-label="Next step">&#8250;</button>
+        <span id="stepCount"></span>
+      </div>
+    </div>
+
+    <script>
+      const events = [
+        { t: 'call', n: 3, tx: 'Call <b>dfs(3)</b> on the root node.', cl: 1 },
+        { t: 'info', tx: 'Node 3 is not p and not q &mdash; search both subtrees.', cl: 2 },
+        { t: 'call', n: 5, tx: 'Recurse left: call <b>dfs(5)</b>.', cl: 3 },
+        { t: 'info', tx: 'Node 5 is not p and not q &mdash; search both subtrees.', cl: 2 },
+        { t: 'call', n: 6, tx: 'Recurse left: call <b>dfs(6)</b>.', cl: 3 },
+        { t: 'match', n: 6, tx: 'Node 6 <b>IS p</b>! Return node 6 immediately.', cl: 2 },
+        { t: 'info', tx: 'Back in dfs(5): <code>left = 6</code>.', cl: 3 },
+        { t: 'call', n: 2, tx: 'Recurse right: call <b>dfs(2)</b>.', cl: 4 },
+        { t: 'info', tx: 'Node 2 is not p and not q &mdash; search both subtrees.', cl: 2 },
+        { t: 'call', n: 7, tx: 'Recurse left: call <b>dfs(7)</b>.', cl: 3 },
+        {
+          t: 'leaf',
+          n: 7,
+          tx: 'Node 7 has no children &mdash; both sides null, returns <code>null</code>.',
+          cl: 6
+        },
+        { t: 'info', tx: 'Back in dfs(2): <code>left = null</code>.', cl: 3 },
+        { t: 'call', n: 4, tx: 'Recurse right: call <b>dfs(4)</b>.', cl: 4 },
+        { t: 'match', n: 4, tx: 'Node 4 <b>IS q</b>! Return node 4 immediately.', cl: 2 },
+        { t: 'info', tx: 'Back in dfs(2): <code>right = 4</code>.', cl: 4 },
+        {
+          t: 'combine',
+          n: 2,
+          lbl: '4',
+          tx: 'dfs(2): left=null, right=4 &rarr; only one side found, pass it up. Return <code>4</code>.',
+          cl: 6
+        },
+        { t: 'info', tx: 'Back in dfs(5): <code>right = 4</code>.', cl: 4 },
+        {
+          t: 'combine',
+          n: 5,
+          lbl: '5',
+          lca: true,
+          tx: 'dfs(5): left=6, right=4 &rarr; <b>BOTH non-null!</b> p and q are in different subtrees &mdash; node 5 <b>is the LCA</b>.',
+          cl: 5
+        },
+        { t: 'info', tx: 'Back in dfs(3): <code>left = 5</code>.', cl: 3 },
+        { t: 'call', n: 1, tx: 'Recurse right: call <b>dfs(1)</b> (still has to run).', cl: 4 },
+        { t: 'info', tx: 'Node 1 is not p and not q &mdash; search both subtrees.', cl: 2 },
+        { t: 'call', n: 0, tx: 'Recurse left: call <b>dfs(0)</b>.', cl: 3 },
+        { t: 'leaf', n: 0, tx: 'Node 0 has no children, returns <code>null</code>.', cl: 6 },
+        { t: 'info', tx: 'Back in dfs(1): <code>left = null</code>.', cl: 3 },
+        { t: 'call', n: 8, tx: 'Recurse right: call <b>dfs(8)</b>.', cl: 4 },
+        { t: 'leaf', n: 8, tx: 'Node 8 has no children, returns <code>null</code>.', cl: 6 },
+        { t: 'info', tx: 'Back in dfs(1): <code>right = null</code>.', cl: 4 },
+        {
+          t: 'combine',
+          n: 1,
+          lbl: 'null',
+          tx: 'dfs(1): left=null, right=null &rarr; neither side found anything. Return <code>null</code>.',
+          cl: 6
+        },
+        { t: 'info', tx: 'Back in dfs(3): <code>right = null</code>.', cl: 4 },
+        {
+          t: 'combine',
+          n: 3,
+          lbl: '5',
+          tx: 'dfs(3): left=5, right=null &rarr; only left found something, pass it up. Return node <code>5</code>.',
+          cl: 6
+        },
+        {
+          t: 'final',
+          tx: '<b>dfs(root) returns node 5.</b> LCA(6, 4) = 5 &mdash; matches the expected output.',
+          cl: 6
+        }
+      ];
+      const codeLines = [
+        'function dfs(node) {',
+        '  if (!node) return null;',
+        '  if (node === p || node === q) return node;',
+        '  const left = dfs(node.left);',
+        '  const right = dfs(node.right);',
+        '  if (left && right) return node;',
+        '  return left || right;',
+        '}'
+      ];
+      document.getElementById('codePanel').innerHTML = codeLines
+        .map(
+          (l, i) =>
+            '<div id="cl' + i + '" style="color:var(--sub)">' + l.replace(/</g, '&lt;') + '</div>'
+        )
+        .join('');
+
+      let idx = 0;
+      function compute(upto) {
+        let stack = [],
+          resolved = {},
+          lcaNode = null,
+          current = null,
+          downEdge = null,
+          upEdge = null,
+          matched = {};
+        for (let i = 0; i <= upto; i++) {
+          const e = events[i];
+          downEdge = null;
+          upEdge = null;
+          if (e.t === 'call') {
+            const p = stack.length ? stack[stack.length - 1] : null;
+            downEdge = [p, e.n];
+            stack.push(e.n);
+            current = e.n;
+          } else if (e.t === 'info') {
+            current = stack.length ? stack[stack.length - 1] : null;
+          } else if (e.t === 'match' || e.t === 'leaf' || e.t === 'combine') {
+            const node = e.n;
+            const p = stack.length >= 2 ? stack[stack.length - 2] : null;
+            if (e.t === 'match') {
+              resolved[node] = String(node);
+              matched[node] = true;
+            } else if (e.t === 'leaf') {
+              resolved[node] = 'null';
+            } else {
+              resolved[node] = e.lbl;
+              if (e.lca) lcaNode = node;
+            }
+            upEdge = [node, p];
+            stack.pop();
+            current = stack.length ? stack[stack.length - 1] : null;
+          } else if (e.t === 'final') {
+            current = null;
+          }
+        }
+        return { stack, resolved, lcaNode, current, downEdge, upEdge, matched };
+      }
+      const pos = {
+        3: [340, 50],
+        5: [190, 140],
+        1: [490, 140],
+        6: [100, 230],
+        2: [280, 230],
+        0: [400, 230],
+        8: [580, 230],
+        7: [240, 320],
+        4: [320, 320]
+      };
+      function render() {
+        const st = compute(idx);
+        const ev = events[idx];
+        document.querySelectorAll('[data-n]').forEach((g) => {
+          const n = g.getAttribute('data-n');
+          const c = g.querySelector('circle');
+          c.setAttribute('class', 'box');
+          c.style.fill = '';
+          c.style.stroke = '';
+          c.style.strokeWidth = '';
+          if (st.lcaNode == Number(n)) {
+            c.style.fill = 'var(--gold-bg)';
+            c.style.stroke = 'var(--gold)';
+            c.style.strokeWidth = '2';
+          } else if (st.matched[n]) {
+            c.style.fill = 'var(--green-bg)';
+            c.style.stroke = 'var(--green)';
+            c.style.strokeWidth = '2';
+          } else if (st.current == Number(n)) {
+            c.style.fill = 'var(--blue-bg)';
+            c.style.stroke = 'var(--blue)';
+            c.style.strokeWidth = '2';
+          }
+        });
+        const rl = document.getElementById('resultLabels');
+        rl.innerHTML = '';
+        Object.keys(st.resolved).forEach((n) => {
+          const [x, y] = pos[n];
+          const el = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          el.setAttribute('x', x);
+          el.setAttribute('y', y + 40);
+          el.textContent = '\u2192 ' + st.resolved[n];
+          if (st.lcaNode == n) {
+            el.setAttribute('fill', 'var(--gold)');
+            el.setAttribute('font-weight', '600');
+          } else if (st.matched[n]) {
+            el.setAttribute('fill', 'var(--green)');
+            el.setAttribute('font-weight', '600');
+          }
+          rl.appendChild(el);
+        });
+        document.querySelectorAll('#edges line').forEach((l) => {
+          l.setAttribute('stroke', 'var(--border)');
+          l.setAttribute('stroke-width', '1.6');
+        });
+        if (st.downEdge && st.downEdge[0] !== null) {
+          const l = document.querySelector(
+            '[data-e="' + st.downEdge[0] + '-' + st.downEdge[1] + '"]'
+          );
+          if (l) {
+            l.setAttribute('stroke', 'var(--blue)');
+            l.setAttribute('stroke-width', '2.5');
+          }
+        }
+        if (st.upEdge && st.upEdge[1] !== null) {
+          const l = document.querySelector('[data-e="' + st.upEdge[1] + '-' + st.upEdge[0] + '"]');
+          if (l) {
+            l.setAttribute('stroke', 'var(--green)');
+            l.setAttribute('stroke-width', '2.5');
+          }
+        }
+        const stackList = document.getElementById('stackList');
+        stackList.innerHTML =
+          st.stack.map((s) => '<div class="chip">dfs(' + s + ')</div>').join('') ||
+          '<div style="font-size:12px;color:var(--sub)">stack empty</div>';
+        for (let i = 0; i < codeLines.length; i++) {
+          const d = document.getElementById('cl' + i);
+          d.style.background = ev.cl === i ? 'var(--blue-bg)' : 'transparent';
+          d.style.color = ev.cl === i ? 'var(--blue)' : 'var(--sub)';
+        }
+        document.getElementById('stepText').innerHTML = ev.tx;
+        document.getElementById('stepCount').textContent = idx + 1 + ' / ' + events.length;
+        document.getElementById('prog').style.width =
+          Math.round(((idx + 1) / events.length) * 100) + '%';
+        document.getElementById('prevBtn').disabled = idx === 0;
+        document.getElementById('nextBtn').disabled = idx === events.length - 1;
+      }
+      document.getElementById('prevBtn').onclick = () => {
+        if (idx > 0) {
+          idx--;
+          render();
+        }
+      };
+      document.getElementById('nextBtn').onclick = () => {
+        if (idx < events.length - 1) {
+          idx++;
+          render();
+        }
+      };
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' && idx < events.length - 1) {
+          idx++;
+          render();
+        }
+        if (e.key === 'ArrowLeft' && idx > 0) {
+          idx--;
+          render();
+        }
+      });
+      render();
+    </script>
+  </body>
+</html>

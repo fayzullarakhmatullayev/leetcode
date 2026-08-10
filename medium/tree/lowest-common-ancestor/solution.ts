@@ -1,4 +1,4 @@
-import { createTree, TreeNode } from '../../utils';
+import { createTree, TreeNode } from '../../../utils';
 
 function lowestCommonAncestor(
   root: TreeNode | null,

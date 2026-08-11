@@ -38,12 +38,12 @@
 - [x] Binary Tree Preorder Traversal
 - [x] Binary Tree Inorder Traversal
 - [x] Binary Tree Postorder Traversal
-- [ ] Binary Tree Right Side View
+- [x] Binary Tree Right Side View
 
 ### Tree Relationships / Paths
 
 - [x] Lowest Common Ancestor of a Binary Tree
-- [ ] Subtree of Another Tree
+- [x] Subtree of Another Tree
 - [ ] Path Sum II
 - [ ] Binary Tree Maximum Path Sum
 - [ ] Sum Root to Leaf Numbers

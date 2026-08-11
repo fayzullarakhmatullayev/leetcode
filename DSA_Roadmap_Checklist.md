@@ -44,7 +44,7 @@
 
 - [x] Lowest Common Ancestor of a Binary Tree
 - [x] Subtree of Another Tree
-- [ ] Path Sum II
+- [x] Path Sum II
 - [ ] Binary Tree Maximum Path Sum
 - [ ] Sum Root to Leaf Numbers
 

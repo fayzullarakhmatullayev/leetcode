@@ -45,14 +45,14 @@
 - [x] Lowest Common Ancestor of a Binary Tree
 - [x] Subtree of Another Tree
 - [x] Path Sum II
-- [ ] Binary Tree Maximum Path Sum
-- [ ] Sum Root to Leaf Numbers
+- [x] Binary Tree Maximum Path Sum
+- [x] Sum Root to Leaf Numbers
 
 ### Binary Search Trees
 
 - [x] Validate Binary Search Tree
-- [ ] Search in a Binary Search Tree
-- [ ] Insert into a Binary Search Tree
+- [x] Search in a Binary Search Tree
+- [x] Insert into a Binary Search Tree
 - [ ] Kth Smallest Element in a BST
 - [ ] Lowest Common Ancestor of a BST
 

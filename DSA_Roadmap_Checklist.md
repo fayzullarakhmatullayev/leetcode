@@ -53,8 +53,8 @@
 - [x] Validate Binary Search Tree
 - [x] Search in a Binary Search Tree
 - [x] Insert into a Binary Search Tree
-- [ ] Kth Smallest Element in a BST
-- [ ] Lowest Common Ancestor of a BST
+- [x] Kth Smallest Element in a BST
+- [x] Lowest Common Ancestor of a BST
 
 ### Tree Construction / Advanced
 

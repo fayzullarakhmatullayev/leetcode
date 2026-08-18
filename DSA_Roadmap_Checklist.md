@@ -64,8 +64,8 @@
 
 ## Stack
 
-- [ ] Valid Parentheses
-- [ ] Min Stack
+- [x] Valid Parentheses
+- [x] Min Stack
 - [ ] Daily Temperatures
 - [ ] Next Greater Element
 - [ ] Evaluate Reverse Polish Notation

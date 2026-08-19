@@ -58,7 +58,7 @@
 
 ### Tree Construction / Advanced
 
-- [ ] Construct Binary Tree from Preorder and Inorder Traversal
+- [x] Construct Binary Tree from Preorder and Inorder Traversal
 - [ ] Serialize and Deserialize Binary Tree
 - [ ] Populating Next Right Pointers in Each Node
 
@@ -66,7 +66,7 @@
 
 - [x] Valid Parentheses
 - [x] Min Stack
-- [ ] Daily Temperatures
+- [x] Daily Temperatures
 - [ ] Next Greater Element
 - [ ] Evaluate Reverse Polish Notation
 - [ ] Decode String
